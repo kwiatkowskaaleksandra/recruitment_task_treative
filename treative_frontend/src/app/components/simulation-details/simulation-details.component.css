@@ -1,0 +1,94 @@
+.simulation-details {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Comic Sans MS";
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detailsCharts {
+  margin: 0 auto 0 5px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 52%;
+  height: fit-content;
+}
+
+.simulation-info {
+  width: 48%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 42px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+h2, h3 {
+  color: #333;
+}
+
+.edit-button {
+  background-color: slateblue;
+  border-color: slateblue;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #3b2cc5;
+  border-color: #3b2cc5;
+}
+
+ngb-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+ngb-pagination .page-item.active .page-link {
+  background-color: slateblue;
+  border-color: slateblue;
+}
+
+.chartType {
+  margin-left: 10px;
+}

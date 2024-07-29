@@ -1,0 +1,62 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  font-family: "Comic Sans MS";
+  overflow-x: auto;
+}
+
+.btn-outline-secondary, .btn-outline-danger {
+  margin-bottom: 5px;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.table-container .table {
+  text-align: center;
+  width: 90%;
+}
+
+.table-container .table th,
+.table-container .table td {
+  vertical-align: middle;
+}
+
+.addSimulation {
+  background-color: slateblue;
+  border-color: slateblue;
+  font-family: "Comic Sans MS"
+}
+
+.addSimulation:hover {
+  background-color: #3b2cc5;
+  border-color: #3b2cc5;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-outline-secondary, .btn-outline-danger {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+ngb-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+ngb-pagination .page-item.active .page-link {
+  background-color: slateblue;
+  border-color: slateblue;
+}

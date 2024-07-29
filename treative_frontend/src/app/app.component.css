@@ -1,0 +1,7 @@
+.nav-item:hover, a:hover {
+  font-weight: bold;
+}
+
+.navbar {
+  font-family: "Comic Sans MS"
+}

@@ -1,0 +1,16 @@
+.dialogTitle, .dialogContent, .dialogActions {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.dialogContent p {
+  font-size: 1.2em;
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mat-dialog-container {
+  width: 600px;
+}

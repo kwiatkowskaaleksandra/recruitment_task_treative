@@ -1,0 +1,8 @@
+<h2 mat-dialog-title class="dialogTitle">Potwierdź usunięcie</h2>
+<div mat-dialog-content class="dialogContent">
+  <p>Czy na pewno chcesz usunąć symulację o nazwie "{{ data.simulationName }}"?</p>
+</div>
+<div mat-dialog-actions class="dialogActions">
+  <button mat-button (click)="onNoClick()">Nie</button>
+  <button mat-button color="warn" (click)="onYesClick()">Tak</button>
+</div>

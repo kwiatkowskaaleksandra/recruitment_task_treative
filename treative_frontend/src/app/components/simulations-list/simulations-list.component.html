@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary addSimulation" (click)="addSimulation()">Dodaj nową symulację</button>
+  </div>
+  <div class="table-container" *ngIf="simulations && simulations.length > 0; else noSimulations">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Nazwa symulacji</th>
+    <th scope="col">Wielkość populacji</th>
+    <th scope="col">Początkowa liczba osób zakażonych</th>
+    <th scope="col">Wskaźnik zakaźności</th>
+    <th scope="col">Wskaźnik śmiertelności</th>
+    <th scope="col">Czas do wyzdrowienia (dni)</th>
+    <th scope="col">Czas do śmierci (dni)</th>
+    <th scope="col">Czas trwania symulacji (dni)</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let simulation of paginatedResults">
+    <th scope="row">{{simulation.idSimulation}}</th>
+    <td>{{simulation.simulationName}}</td>
+    <td>{{simulation.populationSize}}</td>
+    <td>{{simulation.initialNumberOfInfectedPeople}}</td>
+    <td>{{simulation.infectiveRate}}</td>
+    <td>{{simulation.mortalityRate}}</td>
+    <td>{{simulation.recoveryDays}}</td>
+    <td>{{simulation.deathDays}}</td>
+    <td>{{simulation.simulationDays}}</td>
+    <td>
+      <button class="btn btn-sm btn-outline-secondary mr-2" (click)="editSimulation(simulation.idSimulation)">
+        <i class="fas fa-edit"></i>
+      </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="deleteSimulation(simulation.idSimulation)">
+        <i class="fas fa-trash"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+  </div>
+  <ngb-pagination [collectionSize]="simulations ? simulations.length : 0" [(page)]="currentPage" [pageSize]="itemsPerPage" (pageChange)="onPageChange($event)"></ngb-pagination>
+
+  <ng-template #noSimulations>
+    <p>Brak symulacji do wyświetlenia.</p>
+  </ng-template>
+</div>

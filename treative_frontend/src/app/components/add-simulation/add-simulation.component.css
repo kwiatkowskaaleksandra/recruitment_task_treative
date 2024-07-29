@@ -1,0 +1,54 @@
+.container {
+  max-width: 600px;
+}
+
+.card {
+  font-family: "Comic Sans MS";
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.save {
+  font-family: "Comic Sans MS";
+  width: 20%;
+  font-weight: bold;
+  background-color: slateblue;
+  border-color: slateblue;
+  color: white !important;
+}
+
+.save:hover {
+  background-color: #3b2cc5;
+  border-color: #3b2cc5;
+}
+
+.cancel {
+  font-family: "Comic Sans MS";
+  width: 20%;
+  font-weight: bold;
+  background-color: #777676;
+  border-color: #777676;
+  color: white !important;
+  margin-right: 5px;
+}
+
+.cancel:hover {
+  background-color: #464646;
+  border-color: #464646;
+}
+
+.error {
+  border-radius: 5px;
+  border: 3px solid #ce0909;
+  background-color: #ffa5c5;
+  height: 100px;
+  width: 500px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}

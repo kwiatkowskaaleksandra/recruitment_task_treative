@@ -1,0 +1,65 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card p-4" >
+    <h3 class="text-center mb-3">Dodaj nową symulację</h3>
+    <form>
+      <div class="form-group row mb-3">
+        <label for="name" class="col-sm-4 col-form-label">Nazwa symulacji</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="simulation.simulationName">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="simulationName" class="col-sm-4 col-form-label">Wielkość populacji</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="simulationName" name="simulationName" min="0" placeholder="0" [(ngModel)]="simulation.populationSize">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="initialInfected" class="col-sm-4 col-form-label">Początkowa liczba osób zakażonych</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="initialInfected" name="initialInfected" min="0" placeholder="0" [(ngModel)]="simulation.initialNumberOfInfectedPeople">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="infectiveRate" class="col-sm-4 col-form-label">Wskaźnik zakaźności</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="infectiveRate" name="infectiveRate" min="0" placeholder="0" step="0.1" [(ngModel)]="simulation.infectiveRate">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="mortalityRate" class="col-sm-4 col-form-label">Wskaźnik śmiertelności</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="mortalityRate" name="mortalityRate" min="0" placeholder="0" step="0.1" [(ngModel)]="simulation.mortalityRate">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="recoveryDays" class="col-sm-4 col-form-label">Czas do wyzdrowienia (dni)</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="recoveryDays" name="recoveryDays" min="0" placeholder="0" [(ngModel)]="simulation.recoveryDays">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="deathDays" class="col-sm-4 col-form-label">Czas do śmierci (dni)</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="deathDays" name="deathDays" min="0" placeholder="0" [(ngModel)]="simulation.deathDays">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="simulationDays" class="col-sm-4 col-form-label">Czas trwania symulacji (dni)</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="simulationDays" name="simulationDays" min="0" placeholder="0" [(ngModel)]="simulation.simulationDays">
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="isError" class="error">
+      {{errorMessage}}
+    </div>
+
+    <div mat-dialog-actions class="d-flex justify-content-end">
+      <button mat-button (click)="onNoClick()" class="btn btn-success btn-block cancel">Anuluj</button>
+      <button mat-button (click)="saveSimulation()" class="btn btn-success btn-block save">Zapisz</button>
+    </div>
+
+  </div>
+</div>

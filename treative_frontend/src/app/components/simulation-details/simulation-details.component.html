@@ -1,0 +1,69 @@
+<div class="simulation-details">
+  <div class="content">
+    <div class="simulation-info">
+    <div class="details">
+      <div class="header">
+        <h2><b>Nazwa symulacji:</b> {{ simulation.simulationName }}</h2>
+        <button (click)="editSimulation(simulation)" class="edit-button"><i class="fas fa-edit"></i></button>
+      </div>
+      <p><b>Wielkość symulacji:</b> {{ simulation.populationSize }}</p>
+      <p><b>Początkowa liczba osób zakażonych:</b> {{ simulation.initialNumberOfInfectedPeople }}</p>
+      <p><b>Wskaźnik zakaźności:</b> {{ simulation.infectiveRate }}</p>
+      <p><b>Wskaźnik śmiertelności:</b> {{ simulation.mortalityRate }}</p>
+      <p><b>Czas do wyzdrowienia:</b> {{ simulation.recoveryDays }} dni</p>
+      <p><b>Czas do śmierci:</b> {{ simulation.deathDays }} dni</p>
+      <p><b>Czas trwania symulacji:</b> {{ simulation.simulationDays }} dni</p>
+    </div>
+  </div>
+    <div class="detailsCharts">
+      <h3>Wykres</h3>
+      <div>
+        <label>
+          <input class="chartType" type="checkbox" [(ngModel)]="showInfected" (change)="prepareChartData()"> Zakażeni
+        </label>
+        <label>
+          <input class="chartType" type="checkbox" [(ngModel)]="showHealthy" (change)="prepareChartData()"> Zdrowi
+        </label>
+        <label>
+          <input class="chartType" type="checkbox" [(ngModel)]="showDied" (change)="prepareChartData()"> Zmarli
+        </label>
+        <label>
+          <input class="chartType" type="checkbox" [(ngModel)]="showRecovered" (change)="prepareChartData()"> Wyzdrowiali
+        </label>
+      </div>
+      <div style="display: block;">
+        <canvas baseChart
+                [data]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [type]="lineChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="details" style="margin-top: 10px">
+    <h3>Wynik symulacji</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th>Liczba osób zakażonych</th>
+        <th>Liczba osób zdrowych</th>
+        <th>Liczba osób zmarłych</th>
+        <th>Liczba ozdrowieńców</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let result of paginatedResults">
+        <td>{{ result.date }}</td>
+        <td>{{ result.numberOfInfectedPeople }}</td>
+        <td>{{ result.numberOfHealthyPeople }}</td>
+        <td>{{ result.numberOfPeopleWhoDied }}</td>
+        <td>{{ result.numberOfRecoveredPeople }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <ngb-pagination [collectionSize]="dailyResults.length" [(page)]="currentPage" [pageSize]="itemsPerPage" (pageChange)="onPageChange($event)"></ngb-pagination>
+  </div>
+</div>
