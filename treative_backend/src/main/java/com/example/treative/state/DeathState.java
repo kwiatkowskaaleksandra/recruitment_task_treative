@@ -13,19 +13,17 @@ public class DeathState implements SimulationState {
      */
     @Override
     public void handle(SimulationContext context) {
-        int infected = context.getInfected();
-        int deceased = context.getDeceased();
+        int day = context.getDay();
+        int deathDays = context.getSimulation().getDeathDays();
+        int recoveryDays = context.getSimulation().getRecoveryDays();
 
-        if (context.getDay() >= context.getSimulation().getDeathDays()) {
-            int newDeaths = (int) (infected * context.getSimulation().getMortalityRate());
-            newDeaths = Math.min(newDeaths, infected);
-            infected -= newDeaths;
-            deceased += newDeaths;
+        if (day >= deathDays && deathDays <= recoveryDays) {
+            int deathsToday = (int) (context.getInfectionsByDay()[day - deathDays] * context.getSimulation().getMortalityRate());
+            context.setInfected(context.getInfected() - deathsToday);
+            context.setDeceased(context.getDeceased() + deathsToday);
+            context.getDeathsByDay()[day] = deathsToday;
         }
 
-        context.setInfected(infected);
-        context.setDeceased(deceased);
-
-        context.setState(new FinalState());
+        context.setState(new RecoveryState());
     }
 }

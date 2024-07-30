@@ -13,19 +13,26 @@ public class RecoveryState implements SimulationState {
      */
     @Override
     public void handle(SimulationContext context) {
-        int infected = context.getInfected();
-        int recovered = context.getRecovered();
+        int day = context.getDay();
+        int recoveryDays = context.getSimulation().getRecoveryDays();
+        int deathDays = context.getSimulation().getDeathDays();
 
-        if (context.getDay() >= context.getSimulation().getRecoveryDays()) {
-            int newRecoveries = Math.min(infected, context.getSimulation().getPopulationSize());
-            infected -= newRecoveries;
-            recovered += newRecoveries;
+        if (day >= recoveryDays) {
+            int actualRecoveries = context.getInfectionsByDay()[day - recoveryDays];
+
+            if (day >= deathDays) {
+                if (deathDays <= recoveryDays) {
+                    int deathsBeforeRecovery = context.getDeathsByDay()[day - (recoveryDays - deathDays)];
+                    actualRecoveries -= deathsBeforeRecovery;
+                }
+            }
+
+            context.setInfected(context.getInfected() - actualRecoveries);
+            context.setRecovered(context.getRecovered() + actualRecoveries);
+            context.getRecoveriesByDay()[day] = actualRecoveries;
         }
 
-        context.setInfected(infected);
-        context.setRecovered(recovered);
-
-        context.setState(new DeathState());
+        context.setState(new FinalState());
     }
 
 }

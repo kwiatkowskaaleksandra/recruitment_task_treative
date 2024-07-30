@@ -4,6 +4,7 @@ import com.example.treative.model.DailyResult;
 import com.example.treative.model.Simulation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -53,6 +54,21 @@ public class SimulationContext {
     private int day;
 
     /**
+     * The number of new infections by day.
+     */
+    private int[] infectionsByDay;
+
+    /**
+     * The number of deaths by day.
+     */
+    private int[] deathsByDay;
+
+    /**
+     * The number of recoveries by day.
+     */
+    private int[] recoveriesByDay;
+
+    /**
      * Constructs a SimulationContext with the given simulation.
      * Initializes the initial state and population data.
      *
@@ -66,6 +82,13 @@ public class SimulationContext {
         this.deceased = 0;
         this.recovered = 0;
         this.day = 0;
+        this.infectionsByDay = new int[simulation.getSimulationDays()];
+        this.deathsByDay = new int[simulation.getSimulationDays()];
+        this.recoveriesByDay = new int[simulation.getSimulationDays()];
+        Arrays.fill(infectionsByDay, 0);
+        Arrays.fill(deathsByDay, 0);
+        Arrays.fill(recoveriesByDay, 0);
+        infectionsByDay[0] = infected;
         this.state = new InitialState();
     }
 
@@ -200,5 +223,32 @@ public class SimulationContext {
      */
     public Simulation getSimulation() {
         return simulation;
+    }
+
+    /**
+     * Returns the number of new infections by day.
+     *
+     * @return the array of new infections by day
+     */
+    public int[] getInfectionsByDay() {
+        return infectionsByDay;
+    }
+
+    /**
+     * Returns the number of deaths by day.
+     *
+     * @return the array of deaths by day
+     */
+    public int[] getDeathsByDay() {
+        return deathsByDay;
+    }
+
+    /**
+     * Returns the number of recoveries by day.
+     *
+     * @return the array of recoveries by day
+     */
+    public int[] getRecoveriesByDay() {
+        return recoveriesByDay;
     }
 }

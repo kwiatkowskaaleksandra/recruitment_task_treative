@@ -19,13 +19,14 @@ public class InfectionState implements SimulationState {
 
         newInfections = Math.min(newInfections, susceptible);
 
+        context.getInfectionsByDay()[context.getDay()] = newInfections;
         infected += newInfections;
         susceptible -= newInfections;
 
         context.setInfected(infected);
         context.setSusceptible(susceptible);
 
-        context.setState(new RecoveryState());
+        context.setState(new DeathState());
     }
 
 }
